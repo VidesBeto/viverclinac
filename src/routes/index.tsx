@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { ArrowDown, ArrowUpRight, Menu, X, Instagram, MapPin, Clock, Phone, Sparkles, HeartPulse, Activity, Flower2, Waves, Leaf, ChevronDown } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -14,7 +14,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const videoSrc = "/Camera_zooms_in_dark_screen_903b9352.mp4";
 const treatments = [
   { n: "01", title: "Enzimas", desc: "Protocolos estéticos personalizados, sempre precedidos de avaliação profissional.", icon: Sparkles, tag: "Corporal" },
   { n: "02", title: "Microagulhamento", desc: "Cuidado facial com foco na renovação e na textura da pele.", icon: Activity, tag: "Facial" },
@@ -28,37 +27,6 @@ const treatments = [
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const heroRef = useRef<HTMLElement>(null);
-  const [progress, setProgress] = useState(0);
-  const [videoReady, setVideoReady] = useState(false);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    const hero = heroRef.current;
-    if (!video || !hero) return;
-    let raf = 0;
-    let duration = 0;
-    const onMetadata = () => { duration = video.duration || 0; setVideoReady(true); };
-    const update = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const rect = hero.getBoundingClientRect();
-        const total = hero.offsetHeight - window.innerHeight;
-        const p = total > 0 ? Math.min(1, Math.max(0, -rect.top / total)) : 0;
-        setProgress(p);
-        if (duration > 0 && Number.isFinite(duration)) {
-          const target = Math.min(Math.max(0, p * duration), Math.max(0, duration - 0.05));
-          if (Math.abs(video.currentTime - target) > 0.045) video.currentTime = target;
-        }
-      });
-    };
-    video.addEventListener("loadedmetadata", onMetadata);
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    update();
-    return () => { cancelAnimationFrame(raf); video.removeEventListener("loadedmetadata", onMetadata); window.removeEventListener("scroll", update); window.removeEventListener("resize", update); };
-  }, []);
 
   const closeMenu = () => setMenuOpen(false);
   return (
@@ -74,20 +42,16 @@ function Index() {
         </nav>
       </header>
 
-      <section id="inicio" ref={heroRef} className="vc-hero-scroll">
-        <div className="vc-hero-sticky">
-          <video ref={videoRef} className="vc-hero-video" src={videoSrc} muted playsInline preload="auto" aria-label="Vídeo de apresentação da Viver Clínica" />
-          <div className="vc-hero-shade" />
-          <div className="vc-hero-grain" />
-          <div className="vc-hero-content">
-            <div className="vc-kicker"><span /> CUIDADO • ESTÉTICA • BEM-ESTAR</div>
-            <h1>O seu cuidado<br/><em>em primeiro lugar.</em></h1>
-            <p>Um espaço para se reconectar com o que faz você se sentir bem.</p>
-            <a href="#tratamentos" className="vc-button vc-button-gold">Explore a clínica <ArrowDown size={16}/></a>
-          </div>
-          <div className="vc-hero-bottom"><span>VIVER CLÍNICA · CUIDADO EM CADA DETALHE</span><span>SCROLL PARA DESCOBRIR ↓</span></div>
-          <div className="vc-scroll-progress"><span style={{ transform: `scaleX(${progress})` }} /></div>
+      <section id="inicio" className="vc-hero">
+        <div className="vc-hero-background"><img src="/unnamed_(4).webp_b9a90a0d.jpg" alt="" aria-hidden="true" /></div>
+        <div className="vc-hero-shade" />
+        <div className="vc-hero-content">
+          <div className="vc-kicker"><span /> CUIDADO • ESTÉTICA • BEM-ESTAR</div>
+          <h1><span>O seu cuidado</span><em>em primeiro lugar.</em></h1>
+          <p>Um espaço para se reconectar com o que faz você se sentir bem.</p>
+          <a href="#tratamentos" className="vc-button vc-button-gold">Explore a clínica <ArrowDown size={16}/></a>
         </div>
+        <div className="vc-hero-bottom"><span>VIVER CLÍNICA · CUIDADO EM CADA DETALHE</span><span>SCROLL PARA DESCOBRIR ↓</span></div>
       </section>
 
       <section className="vc-intro" id="sobre">
