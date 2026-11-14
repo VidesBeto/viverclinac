@@ -81,14 +81,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Viver Clínica | Estética, Bem-estar e Cuidado" },
+      { name: "description", content: "Conheça a Viver Clínica. Cuidado, estética e bem-estar em um espaço pensado para você." },
+      { name: "author", content: "Viver Clínica" },
+      { property: "og:title", content: "Viver Clínica | Estética, Bem-estar e Cuidado" },
+      { property: "og:description", content: "Cuidado, estética e bem-estar em equilíbrio." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@viverclinac" },
     ],
     links: [
       {
@@ -106,7 +106,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>
