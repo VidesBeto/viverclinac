@@ -93,6 +93,18 @@ function Index() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const founderPhoto = document.querySelector<HTMLElement>(".vc-intro-image");
+    if (!founderPhoto) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      founderPhoto.classList.toggle("is-visible", entry.isIntersecting);
+    }, { threshold: 0.28 });
+
+    observer.observe(founderPhoto);
+    return () => observer.disconnect();
+  }, []);
+
   const closeMenu = () => setMenuOpen(false);
   return (
     <main className="vc-site">
@@ -138,7 +150,7 @@ function Index() {
           <h2>Beleza é se sentir<br/><em>bem consigo.</em></h2>
           <div><p>Na Viver Clínica, cada jornada começa com escuta e atenção. Acreditamos que cuidado de verdade respeita a individualidade e valoriza o equilíbrio entre saúde, estética e bem-estar.</p><a href="#contato" className="vc-text-link">Conheça nosso atendimento <ArrowUpRight size={16}/></a></div>
         </div>
-        <div className="vc-intro-image"><img src="/modelo1.jpg" alt="Imagem de apresentação da Viver Clínica" loading="lazy"/><div className="vc-image-caption">CUIDADO PENSADO PARA VOCÊ</div></div>
+        <div className="vc-intro-image"><img src="/modelo1.jpg" alt="Ketylen Fernandes, CEO da Viver Clínica" loading="lazy"/><div className="vc-image-caption vc-founder-caption"><span>Ketylen Fernandes</span><small>CEO da Viver Clínica</small></div></div>
       </section>
 
       <section className="vc-treatments" id="tratamentos">
