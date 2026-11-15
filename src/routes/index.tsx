@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowDown, ArrowUpRight, Menu, X, Instagram, MapPin, Clock, Phone, Sparkles, HeartPulse, Activity, Flower2, Waves, Leaf, ChevronDown } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -27,57 +27,6 @@ const treatments = [
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const heroRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const section = heroRef.current;
-    const video = videoRef.current;
-    if (!section || !video) return;
-
-    let frame = 0;
-    let duration = 0;
-    let metadataReady = false;
-
-    const syncVideoToScroll = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const scrollableDistance = section.offsetHeight - window.innerHeight;
-        if (scrollableDistance <= 0) return;
-        const bounds = section.getBoundingClientRect();
-        const progress = Math.min(1, Math.max(0, -bounds.top / scrollableDistance));
-
-        if (metadataReady && duration > 0 && Number.isFinite(duration)) {
-          const targetTime = Math.min(duration - 0.04, Math.max(0, progress * duration));
-          if (Math.abs(video.currentTime - targetTime) > 0.035) {
-            try { video.currentTime = targetTime; } catch { /* aguarda o próximo quadro */ }
-          }
-        }
-      });
-    };
-
-    const onMetadata = () => {
-      duration = video.duration;
-      metadataReady = Number.isFinite(duration) && duration > 0;
-      if (metadataReady) {
-        try { video.currentTime = 0; } catch { /* o navegador pode ainda preparar o primeiro quadro */ }
-        syncVideoToScroll();
-      }
-    };
-
-    video.addEventListener("loadedmetadata", onMetadata);
-    window.addEventListener("scroll", syncVideoToScroll, { passive: true });
-    window.addEventListener("resize", syncVideoToScroll);
-    if (video.readyState >= 1) onMetadata();
-    syncVideoToScroll();
-
-    return () => {
-      cancelAnimationFrame(frame);
-      video.removeEventListener("loadedmetadata", onMetadata);
-      window.removeEventListener("scroll", syncVideoToScroll);
-      window.removeEventListener("resize", syncVideoToScroll);
-    };
-  }, []);
 
   useEffect(() => {
     const cards = document.querySelectorAll<HTMLElement>(".vc-treatment-card");
@@ -119,29 +68,18 @@ function Index() {
         </nav>
       </header>
 
-      <section id="inicio" ref={heroRef} className="vc-hero-scroll">
-        <div className="vc-hero-sticky">
-          <div className="vc-hero-background">
-            <video
-              ref={videoRef}
-              className="vc-hero-video"
-              src="/Camera_zooms_in_dark_screen_903b9352.mp4"
-              poster="/unnamed_(4).webp_b9a90a0d.jpg"
-              muted
-              playsInline
-              preload="auto"
-              aria-label="Vídeo de apresentação da ViverClin"
-            />
-          </div>
-          <div className="vc-hero-shade" />
-          <div className="vc-hero-content">
-            <div className="vc-kicker"><span /> CUIDADO • ESTÉTICA • BEM-ESTAR</div>
-            <h1><span>O seu cuidado</span><em>em primeiro lugar.</em></h1>
-            <p>Um espaço para se reconectar com o que faz você se sentir bem.</p>
-            <a href="#tratamentos" className="vc-button vc-button-gold">Explore a clínica <ArrowDown size={16}/></a>
-          </div>
-          <div className="vc-hero-bottom"><span>VIVERCLIN · CUIDADO EM CADA DETALHE</span><span>ROLE PARA DESCOBRIR ↓</span></div>
+      <section id="inicio" className="vc-hero">
+        <div className="vc-hero-background">
+          <img className="vc-hero-image" src="/foto001.jpg" alt="Ambiente da ViverClin" fetchPriority="high" />
         </div>
+        <div className="vc-hero-shade" />
+        <div className="vc-hero-content">
+          <div className="vc-kicker"><span /> CUIDADO • ESTÉTICA • BEM-ESTAR</div>
+          <h1><span>O seu cuidado</span><em>em primeiro lugar.</em></h1>
+          <p>Um espaço para se reconectar com o que faz você se sentir bem.</p>
+          <a href="#tratamentos" className="vc-button vc-button-gold">Explore a clínica <ArrowDown size={16}/></a>
+        </div>
+        <div className="vc-hero-bottom"><span>VIVERCLIN · CUIDADO EM CADA DETALHE</span><span>ROLE PARA DESCOBRIR ↓</span></div>
       </section>
 
       <section className="vc-intro" id="sobre">
