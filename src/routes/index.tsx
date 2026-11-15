@@ -15,14 +15,14 @@ export const Route = createFileRoute("/")({
 });
 
 const treatments = [
-  { n: "01", title: "Enzimas", desc: "Protocolos estéticos personalizados, sempre precedidos de avaliação profissional.", icon: Sparkles, tag: "Corporal" },
-  { n: "02", title: "Microagulhamento", desc: "Cuidado facial com foco na renovação e na textura da pele.", icon: Activity, tag: "Facial" },
-  { n: "03", title: "Drenagem linfática", desc: "Técnica manual que auxilia o fluxo linfático e promove sensação de leveza.", icon: Waves, tag: "Corporal" },
+  { n: "01", title: "Enzimas", desc: "Protocolos estéticos personalizados, sempre precedidos de avaliação profissional.", icon: Sparkles, tag: "Corporal" , image: "/8_fotos_procedimentos/01-enzimas.jpg" },
+  { n: "02", title: "Microagulhamento", desc: "Cuidado facial com foco na renovação e na textura da pele.", icon: Activity, tag: "Facial" , image: "/8_fotos_procedimentos/02-microagulhamento.jpg" },
+  { n: "03", title: "Drenagem linfática", desc: "Técnica manual que auxilia o fluxo linfático e promove sensação de leveza.", icon: Waves, tag: "Corporal" , image: "/8_fotos_procedimentos/03-drenagem-linfatica.jpg" },
   { n: "04", title: "Limpeza de pele", desc: "Higienização profunda, extração e hidratação para o cuidado da pele.", icon: Flower2, tag: "Facial" },
-  { n: "05", title: "Preenchimento labial", desc: "Realce de contorno e volume com atenção à harmonia e à naturalidade.", icon: HeartPulse, tag: "Estética" },
-  { n: "06", title: "Peeling", desc: "Procedimentos de renovação cutânea definidos conforme avaliação.", icon: Leaf, tag: "Facial" },
-  { n: "07", title: "Quiropraxia", desc: "Cuidado da saúde musculoesquelética e mobilidade com avaliação individual.", icon: Activity, tag: "Bem-estar" },
-  { n: "08", title: "Reabilitação", desc: "Acompanhamento de reabilitação funcional conforme necessidade clínica.", icon: HeartPulse, tag: "Saúde" },
+  { n: "05", title: "Preenchimento labial", desc: "Realce de contorno e volume com atenção à harmonia e à naturalidade.", icon: HeartPulse, tag: "Estética" , image: "/8_fotos_procedimentos/05-preenchimento-labial.jpg" },
+  { n: "06", title: "Peeling", desc: "Procedimentos de renovação cutânea definidos conforme avaliação.", icon: Leaf, tag: "Facial" , image: "/8_fotos_procedimentos/06-peeling.jpg" },
+  { n: "07", title: "Quiropraxia", desc: "Cuidado da saúde musculoesquelética e mobilidade com avaliação individual.", icon: Activity, tag: "Bem-estar" , image: "/8_fotos_procedimentos/07-quiropraxia.jpg" },
+  { n: "08", title: "Reabilitação", desc: "Acompanhamento de reabilitação funcional conforme necessidade clínica.", icon: HeartPulse, tag: "Saúde" , image: "/8_fotos_procedimentos/08-reabilitacao.jpg" },
 ];
 
 function Index() {
@@ -131,7 +131,7 @@ function Index() {
         <div className="vc-section-label">02 — NOSSOS CUIDADOS</div>
         <div className="vc-treatment-heading"><h2>Um cuidado para<br/><em>cada necessidade.</em></h2><p>Conheça as possibilidades e encontre, com orientação profissional, o cuidado mais adequado para você.</p></div>
         <div className="vc-treatment-grid">
-          {treatments.map((item) => { const Icon = item.icon; return <article className="vc-treatment-card" key={item.n}><div className="vc-card-top"><span>{item.n}</span><Icon size={21} strokeWidth={1.3}/></div><div><small>{item.tag}</small><h3>{item.title}</h3><p>{item.desc}</p></div><a href="#contato" aria-label={`Consultar sobre ${item.title}`}><ArrowUpRight size={18}/></a></article>; })}
+          {treatments.map((item) => { const Icon = item.icon; return <article className="vc-treatment-card" key={item.n}><img className="vc-treatment-image" src={item.image} alt={item.title} loading="lazy"/><div className="vc-card-top"><span>{item.n}</span><Icon size={21} strokeWidth={1.3}/></div><div className="vc-treatment-copy"><small>{item.tag}</small><h3>{item.title}</h3><p>{item.desc}</p></div><a href="#contato" aria-label={`Consultar sobre ${item.title}`}><ArrowUpRight size={18}/></a></article>; })}
         </div>
         <p className="vc-disclaimer">Os procedimentos são indicados após avaliação individual. A disponibilidade e a indicação dependem de análise profissional.</p>
       </section>
