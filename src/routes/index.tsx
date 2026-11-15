@@ -79,6 +79,20 @@ function Index() {
     };
   }, []);
 
+  useEffect(() => {
+    const cards = document.querySelectorAll<HTMLElement>(".vc-treatment-card");
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle("is-visible", entry.isIntersecting);
+      });
+    }, { threshold: 0.16, rootMargin: "0px 0px -6% 0px" });
+
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
+
   const closeMenu = () => setMenuOpen(false);
   return (
     <main className="vc-site">
@@ -131,7 +145,7 @@ function Index() {
         <div className="vc-section-label">02 — NOSSOS CUIDADOS</div>
         <div className="vc-treatment-heading"><h2>Um cuidado para<br/><em>cada necessidade.</em></h2><p>Conheça as possibilidades e encontre, com orientação profissional, o cuidado mais adequado para você.</p></div>
         <div className="vc-treatment-grid">
-          {treatments.map((item) => { const Icon = item.icon; return <article className="vc-treatment-card" key={item.n}><img className="vc-treatment-image" src={item.image} alt={item.title} loading="lazy"/><div className="vc-card-top"><span>{item.n}</span><Icon size={21} strokeWidth={1.3}/></div><div className="vc-treatment-copy"><small>{item.tag}</small><h3>{item.title}</h3><p>{item.desc}</p></div><a href="#contato" aria-label={`Consultar sobre ${item.title}`}><ArrowUpRight size={18}/></a></article>; })}
+          {treatments.map((item) => { const Icon = item.icon; const message = encodeURIComponent(`Olá! Gostaria de agendar ${item.title} na Viver Clínica. Poderiam me passar os horários disponíveis?`); return <a className="vc-treatment-card" key={item.n} href={`https://wa.me/5568999560017?text=${message}`} target="_blank" rel="noopener noreferrer" aria-label={`Agendar ${item.title} pelo WhatsApp`}><img className="vc-treatment-image" src={item.image} alt={item.title} loading="lazy"/><div className="vc-card-top"><span>{item.n}</span><Icon size={21} strokeWidth={1.3}/></div><div className="vc-treatment-copy"><small>{item.tag}</small><h3>{item.title}</h3><p>{item.desc}</p></div><span className="vc-treatment-action"><span>Agendar pelo WhatsApp</span><ArrowUpRight size={18}/></span></a>; })}
         </div>
         <p className="vc-disclaimer">Os procedimentos são indicados após avaliação individual. A disponibilidade e a indicação dependem de análise profissional.</p>
       </section>
