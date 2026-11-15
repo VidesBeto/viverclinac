@@ -18,7 +18,7 @@ const treatments = [
   { n: "01", title: "Enzimas", desc: "Protocolos estéticos personalizados, sempre precedidos de avaliação profissional.", icon: Sparkles, tag: "Corporal" , image: "/8_fotos_procedimentos/01-enzimas.jpg" },
   { n: "02", title: "Microagulhamento", desc: "Cuidado facial com foco na renovação e na textura da pele.", icon: Activity, tag: "Facial" , image: "/8_fotos_procedimentos/02-microagulhamento.jpg" },
   { n: "03", title: "Drenagem linfática", desc: "Técnica manual que auxilia o fluxo linfático e promove sensação de leveza.", icon: Waves, tag: "Corporal" , image: "/8_fotos_procedimentos/03-drenagem-linfatica.jpg" },
-  { n: "04", title: "Limpeza de pele", desc: "Higienização profunda, extração e hidratação para o cuidado da pele.", icon: Flower2, tag: "Facial" },
+  { n: "04", title: "Limpeza de pele", desc: "Higienização profunda, extração e hidratação para o cuidado da pele.", icon: Flower2, tag: "Facial", image: "/8_fotos_procedimentos/04-limpeza-de-pele.jpg" },
   { n: "05", title: "Preenchimento labial", desc: "Realce de contorno e volume com atenção à harmonia e à naturalidade.", icon: HeartPulse, tag: "Estética" , image: "/8_fotos_procedimentos/05-preenchimento-labial.jpg" },
   { n: "06", title: "Peeling", desc: "Procedimentos de renovação cutânea definidos conforme avaliação.", icon: Leaf, tag: "Facial" , image: "/8_fotos_procedimentos/06-peeling.jpg" },
   { n: "07", title: "Quiropraxia", desc: "Cuidado da saúde musculoesquelética e mobilidade com avaliação individual.", icon: Activity, tag: "Bem-estar" , image: "/8_fotos_procedimentos/07-quiropraxia.jpg" },
