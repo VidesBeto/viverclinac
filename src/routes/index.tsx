@@ -70,7 +70,7 @@ function Index() {
 
       <section id="inicio" className="vc-hero">
         <div className="vc-hero-background">
-          <img className="vc-hero-image" src="/Hero.jpg" alt="ViverClin — cuidado, estética e bem-estar" fetchPriority="high" />
+          <img className="vc-hero-image" src="/foto001.jpg" alt="ViverClin — cuidado, estética e bem-estar" fetchPriority="high" />
         </div>
         <div className="vc-hero-shade" />
         <div className="vc-hero-content">
