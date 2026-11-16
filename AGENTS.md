@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- The site ships as a static prerendered export (`vite.config.ts` prerenders `/` to `dist/client/index.html`) so it runs on Apache/LiteSpeed shared hosting with no Node server; keep every route static-compatible and never add server-side data reads the export cannot capture.
+
