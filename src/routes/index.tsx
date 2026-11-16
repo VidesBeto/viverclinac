@@ -101,7 +101,7 @@ function Index() {
       </section>
 
       <section className="vc-experience" id="experiencia">
-        <div className="vc-experience-image"><img src="/unnamed_(4).webp_b9a90a0d.jpg" alt="Detalhe do ambiente e experiência da clínica" loading="lazy"/></div>
+        <div className="vc-experience-image"><img src="/foto001.jpg" alt="Ambiente da ViverClin" loading="lazy"/></div>
         <div className="vc-experience-copy"><div className="vc-section-label">03 — NOSSA ESSÊNCIA</div><h2>Um momento<br/>para <em>você.</em></h2><p>Mais do que um procedimento, queremos que cada visita seja uma experiência de acolhimento, confiança e atenção aos detalhes.</p><div className="vc-gold-rule"/><span>VIVERCLIN · CUIDAR FAZ BEM</span></div>
       </section>
 
