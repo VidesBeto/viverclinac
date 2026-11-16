@@ -60,7 +60,7 @@ function Index() {
       <header className="vc-header">
         <a href="#inicio" className="vc-brand" onClick={closeMenu} aria-label="ViverClin - início">
           <img src="/Logo%20dourado%20Viverclin.png" alt="ViverClin" />
-          <span>VIVER <i>CLÍNICA</i></span>
+          <span>ViverClin</span>
         </a>
         <button className="vc-menu-toggle" aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
         <nav className={menuOpen ? "vc-nav is-open" : "vc-nav"}>
@@ -112,7 +112,7 @@ function Index() {
 
       <section className="vc-contact" id="contato"><div className="vc-contact-inner"><div className="vc-section-label">05 — VAMOS CONVERSAR?</div><h2>Seu cuidado<br/><em>começa com uma conversa.</em></h2><p>Fale com a ViverClin e saiba mais sobre nossos atendimentos.</p><a className="vc-button vc-button-gold" href="https://wa.me/5568999560017?text=Ol%C3%A1%21%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20atendimentos%20da%20ViverClin." target="_blank" rel="noreferrer">Agendar pelo WhatsApp <ArrowUpRight size={17}/></a></div><div className="vc-contact-mark">V</div></section>
 
-      <footer className="vc-footer"><a href="#inicio" className="vc-footer-brand"><img src="/Logo%20dourado%20Viverclin.png" alt="ViverClin"/></a><p>Cuidado, estética e bem-estar.</p><a href="https://www.instagram.com/viverclinac/" target="_blank" rel="noreferrer"><Instagram size={17}/> @viverclinac</a><span>© {new Date().getFullYear()} ViverClin. Todos os direitos reservados.</span></footer>
+      <footer className="vc-footer"><a href="#inicio" className="vc-footer-brand"><img src="/Logo%20dourado%20Viverclin.png" alt="ViverClin"/></a><p>Cuidado, estética e bem-estar.</p><a className="vc-footer-address" href="https://www.google.com/maps/search/?api=1&query=R.+Floriano+Peixoto%2C+859+-+Centro%2C+Rio+Branco+-+AC%2C+69908-610" target="_blank" rel="noreferrer"><MapPin size={17}/><span>R. Floriano Peixoto, 859 - Centro, Rio Branco - AC, 69908-610</span></a><a className="vc-footer-instagram" href="https://www.instagram.com/viverclinac/" target="_blank" rel="noreferrer"><Instagram size={17}/> @viverclinac</a><span>© {new Date().getFullYear()} ViverClin. Todos os direitos reservados.</span></footer>
       <a className="vc-floating-contact" href="https://wa.me/5568999560017?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20ViverClin." target="_blank" rel="noreferrer" aria-label="Fale com a ViverClin pelo WhatsApp"><Instagram size={20}/></a>
     </main>
   );
