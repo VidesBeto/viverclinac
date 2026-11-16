@@ -47,7 +47,7 @@ function Index() {
     if (!founderPhoto) return;
 
     const observer = new IntersectionObserver(([entry]) => {
-      founderPhoto.classList.toggle("is-visible", entry.isIntersecting);
+      founderPhoto.classList.toggle("is-visible", entry?.isIntersecting ?? false);
     }, { threshold: 0.28 });
 
     observer.observe(founderPhoto);
